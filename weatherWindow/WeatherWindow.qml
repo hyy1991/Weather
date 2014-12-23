@@ -14,10 +14,13 @@ Item {
 	    height : weatherWindow.itemHeight * 6
 	}
 	Text {
-	    text : "Hello World!"
-	    font.family : "Helvetica"
+	    id : weatherInfo
+	    property int fonSize : 15
+	    property string detail : "hehe"
+	    text : weatherInfo.detail
 	    color : "red"
-	    contentHeight : weatherWindow.itemHeight * 3
+	    elide : Text.ElideRight
+	    font.pixelSize : weatherInfo.fontSize
 	}
     }
 }
