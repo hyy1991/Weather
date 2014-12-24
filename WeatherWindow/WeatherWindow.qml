@@ -9,15 +9,15 @@ Item {
 	spacing : 2
 	Image {
 	    id : weatherImg
-	    source : imgSource
+	    source : modelData.imgSource
 	    width : weatherWindow.itemWidth * 10
 	    height : weatherWindow.itemHeight * 6
 	}
 	Text {
 	    id : weatherInfo
-	    property int fonSize : 15
+	    property int fontSize : 20
 	    property string detail : "hehe"
-	    text : weatherInfo.detail
+	    text : infoText
 	    color : "red"
 	    elide : Text.ElideRight
 	    font.pixelSize : weatherInfo.fontSize
