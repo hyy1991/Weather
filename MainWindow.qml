@@ -14,6 +14,21 @@ Item {
 		    onClicked : {refresh()}
 		}
 	}
-	WeatherWindow {itemWidth : 8; itemHeight : 7}
+	Repeater {
+		id : repeater
+		model : weatherWindow
+		delegate : WeatherWindow {itemWidth : 8; itemHeight : 7}
+	}
+	
+	Timer {
+		id : timer
+		triggeredOnStart : true
+		running :true
+		repeat: true
+		interval : 1 * 60 * 60 * 1000 
+		onTriggered : {
+			refresh()
+		}
+	}
     }
 }

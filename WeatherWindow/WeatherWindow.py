@@ -7,7 +7,7 @@ class WeatherWindow(QtCore.QObject):
     
     def __init__(self):
         super(WeatherWindow, self).__init__()
-        self._imgSource = 'img/0.gif'
+        self._imgSource = 'img/20.gif'
         self._infoText = ''
 
     @QtCore.pyqtProperty(str, notify=imgSourceChanged)

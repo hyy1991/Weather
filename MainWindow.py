@@ -1,4 +1,4 @@
-#from WeatherService import WeatherService
+from WeatherService import WeatherService
 from PyQt4 import QtCore, QtDeclarative, QtGui
 from WeatherWindow import WeatherWindow
 
@@ -6,16 +6,21 @@ class MainWindow(QtCore.QObject):
     
     def __init__(self):
         super(MainWindow, self).__init__()
-        self._weatherWindow = WeatherWindow.WeatherWindow()
-        #self._service = WeatherService()
+        self._weatherWindow=[]
+        self._weatherWindow.append( WeatherWindow.WeatherWindow())
+        self._service = WeatherService()
+
+    @QtCore.pyqtProperty(QtDeclarative.QPyDeclarativeListProperty, constant=True)
+    def weatherWindow(self):
+        return QtDeclarative.QPyDeclarativeListProperty(self, self._weatherWindow)
 
     @QtCore.pyqtSlot()
     def refresh(self):
         print("refreshed")
-        #result = self._service.getWeather()
-        self._weatherWindow.imgSource = 'img/3.gif'
-        self._weatherWindow.infoText = 'refreshed'
-
+        result = self._service.getWeather()
+        print(result)
+        self._weatherWindow[0].imgSource = 'img/' + result[1]
+        self._weatherWindow[0].infoText = result[0]
     
 if __name__ == '__main__':
     import sys
